@@ -1,0 +1,24 @@
+{% block content %}
+    <h1>BlogPost:</h1>
+    <ul>
+        {% for blogpost in blogposts %}
+        <li>
+
+            <p>{{ blogpost }}</p>
+            <p>{{ blogpost.text }}</p>
+            <p>{{ blogpost.date_adedd }}</p>
+        </li>
+        {% empty %}
+            <li>
+                Nenhuma postagem encontrada, Por favor digite uma postagem.
+            </li>
+        {% endfor %}
+        <form action="#" method='post'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add new Comment</button>
+        </form>
+
+    </ul>
+<a href="{% url 'blogs:new_area' %}">Add new comment:</a>
+{% endblock content %}
